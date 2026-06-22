@@ -1,3 +1,67 @@
+server:
+  port: 8080
+
 spring:
   application:
     name: api-gateway
+
+  cloud:
+    gateway:
+      server:
+        webflux:
+          # Eureka se automatically service instances discover karta hai
+          discovery:
+            locator:
+              enabled: true
+              lower-case-service-id: true  # service names lowercase mein match karega
+
+          # routes:
+
+          #   # ─────────────────────────────────────────
+          #   # USER SERVICE ROUTES
+          #   # ─────────────────────────────────────────
+          #   - id: user-service
+          #     # lb:// = load balanced — Eureka se instance fetch karega
+          #     uri: lb://user-service
+          #     predicates:
+          #       - Path=/api/users/**  # yeh pattern match hone par route karega
+          #     filters:
+          #       - StripPrefix=1        # /api/users/... → /users/... forward karega
+
+          #   # ─────────────────────────────────────────
+          #   # PRODUCT SERVICE ROUTES
+          #   # ─────────────────────────────────────────
+          #   - id: product-service
+          #     uri: lb://product-service
+          #     predicates:
+          #       - Path=/api/products/**
+          #     filters:
+          #       - StripPrefix=1
+
+          #   # ─────────────────────────────────────────
+          #   # ORDER SERVICE ROUTES
+          #   # ─────────────────────────────────────────
+          #   - id: order-service
+          #     uri: lb://order-service
+          #     predicates:
+          #       - Path=/api/orders/**
+          #     filters:
+          #       - StripPrefix=1
+
+# Eureka Server ka address
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+# Actuator — /actuator/health endpoint expose karna
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+  endpoint:
+    health:
+      show-details: always
