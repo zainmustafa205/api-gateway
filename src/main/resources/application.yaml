@@ -14,19 +14,17 @@ spring:
             locator:
               enabled: true
               lower-case-service-id: true  # service names lowercase mein match karega
+          routes:
 
-          # routes:
-
-          #   # ─────────────────────────────────────────
-          #   # USER SERVICE ROUTES
-          #   # ─────────────────────────────────────────
-          #   - id: user-service
-          #     # lb:// = load balanced — Eureka se instance fetch karega
-          #     uri: lb://user-service
-          #     predicates:
-          #       - Path=/api/users/**  # yeh pattern match hone par route karega
-          #     filters:
-          #       - StripPrefix=1        # /api/users/... → /users/... forward karega
+            # ─────────────────────────────────────────
+            # USER SERVICE ROUTES
+            # ─────────────────────────────────────────
+           - id: user-service
+             uri: lb://user-service
+             predicates:
+                - Path=/api/users/v1/**
+             filters:
+                - StripPrefix=2
 
           #   # ─────────────────────────────────────────
           #   # PRODUCT SERVICE ROUTES
