@@ -26,15 +26,15 @@ spring:
              filters:
                 - StripPrefix=2
 
-          #   # ─────────────────────────────────────────
-          #   # PRODUCT SERVICE ROUTES
-          #   # ─────────────────────────────────────────
-          #   - id: product-service
-          #     uri: lb://product-service
-          #     predicates:
-          #       - Path=/api/products/**
-          #     filters:
-          #       - StripPrefix=1
+            # ─────────────────────────────────────────
+            # PRODUCT SERVICE ROUTES
+            # ─────────────────────────────────────────
+           - id: product-service
+             uri: lb://product-service
+             predicates:
+                - Path=/api/products/v1/**
+             filters:
+                - StripPrefix=2
 
           #   # ─────────────────────────────────────────
           #   # ORDER SERVICE ROUTES
