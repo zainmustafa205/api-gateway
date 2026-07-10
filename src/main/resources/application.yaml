@@ -36,15 +36,15 @@ spring:
              filters:
                 - StripPrefix=2
 
-          #   # ─────────────────────────────────────────
-          #   # ORDER SERVICE ROUTES
-          #   # ─────────────────────────────────────────
-          #   - id: order-service
-          #     uri: lb://order-service
-          #     predicates:
-          #       - Path=/api/orders/**
-          #     filters:
-          #       - StripPrefix=1
+            # ─────────────────────────────────────────
+            # ORDER SERVICE ROUTES
+            # ─────────────────────────────────────────
+           - id: order-service
+             uri: lb://order-service
+             predicates:
+                - Path=/api/orders/v1/**
+             filters:
+                - StripPrefix=2
 
 # Eureka Server ka address
 eureka:
