@@ -46,6 +46,16 @@ spring:
              filters:
                 - StripPrefix=2
 
+            # ─────────────────────────────────────────
+            # PAYMENT SERVICE ROUTES
+            # ─────────────────────────────────────────
+           - id: payment-service
+             uri: lb://payment-service
+             predicates:
+                - Path=/api/payments/v1/**
+             filters:
+                - StripPrefix=2
+
 # Eureka Server ka address
 eureka:
   client:
