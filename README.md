@@ -8,7 +8,7 @@ Central entry point for the E-Commerce Microservices system — routes all incom
 
 `api-gateway` is one of six microservices in a larger e-commerce system. It is the **sole entry point** for all client traffic — no service is directly exposed to the outside. It receives every incoming request, matches it against a route definition, and forwards it to the correct downstream service. Load balancing is handled automatically via Eureka service discovery — no hardcoded URLs.
 
-> This service is part of a larger system. See the [main project README](#) for the full architecture and links to all repositories.
+> This service is part of a larger system. See the [main project README](https://github.com/zainmustafa205/ecommerce-microservices) for the full architecture and links to all repositories.
 
 ### Part of the E-Commerce Microservices Ecosystem
 
